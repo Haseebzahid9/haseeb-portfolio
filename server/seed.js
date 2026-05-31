@@ -135,7 +135,7 @@ const seed = async () => {
   await Experience.deleteMany();
   await Education.deleteMany();
 
-  await Admin.create({ name: 'Haseeb Raza', email: 'haseebzahid1370@gmail.com', password: 'Haseeb@137055@' });
+  await Admin.create({ name: 'Haseeb Raza', email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD });
   await Skill.insertMany(skills);
   await Service.insertMany(services);
   await Project.insertMany(projects);

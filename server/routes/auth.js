@@ -16,7 +16,7 @@ const getTransporter = () =>
 const sendOtpEmail = async (otp) => {
   const transporter = getTransporter();
   await transporter.sendMail({
-    from: `"Haseeb Portfolio" <haseebzahid1370@gmail.com>`,
+    from: `"Haseeb Portfolio" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_TO,
     subject: 'Admin Login Verification Code - Haseeb Portfolio',
     html: `
