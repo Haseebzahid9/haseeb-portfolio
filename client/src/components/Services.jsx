@@ -559,7 +559,7 @@ export default function Services() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' }}>
+      <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' }}>
         {visible.map((svc, i) => <ServiceCard key={svc._id} svc={svc} index={i} />)}
       </div>
 
@@ -572,8 +572,14 @@ export default function Services() {
       )}
 
       <style>{`
-        @media (max-width: 900px) { #services > div:nth-child(3) { grid-template-columns: repeat(2, 1fr) !important; } }
-        @media (max-width: 580px) { #services > div:nth-child(3) { grid-template-columns: 1fr !important; } }
+        @media (max-width: 900px) {
+          #services { padding: 60px 30px !important; }
+          .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 580px) {
+          #services { padding: 50px 16px !important; }
+          .services-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+        }
       `}</style>
     </section>
   );

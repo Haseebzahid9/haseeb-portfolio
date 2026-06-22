@@ -123,13 +123,14 @@ export default function Certificates() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18 }}>
+      <div className="certs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18 }}>
         {visible.map((cert, i) => (
           <div
             key={cert._id}
             data-aos="fade-up"
             data-aos-delay={i * 80}
             onClick={() => setSelected(cert)}
+            className="cert-card"
             style={{
               background: '#fff', borderRadius: 10, padding: '18px 22px',
               border: '1px solid #e8e8e8', borderLeft: '4px solid var(--primary)',
@@ -161,8 +162,15 @@ export default function Certificates() {
       {selected && <CertModal cert={selected} onClose={() => setSelected(null)} />}
 
       <style>{`
+        @media (max-width: 900px) {
+          #certificates { padding: 60px 30px !important; }
+        }
         @media (max-width: 700px) {
-          #certificates > div:last-of-type { grid-template-columns: 1fr !important; }
+          .certs-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          #certificates { padding: 50px 16px !important; }
+          .cert-card { padding: 14px 16px !important; gap: 12px !important; }
         }
       `}</style>
     </section>

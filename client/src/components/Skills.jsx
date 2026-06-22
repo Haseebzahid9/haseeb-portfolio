@@ -242,7 +242,7 @@ export default function Skills() {
         }}>
           All Technologies
         </h3>
-        <div style={{
+        <div className="skills-all-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
           gap: 18,
@@ -253,11 +253,18 @@ export default function Skills() {
 
       <style>{`
         @media (max-width: 900px) {
+          #skills { padding: 60px 30px !important; }
           .mern-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .skills-all-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important; }
         }
         @media (max-width: 600px) {
-          #skills { padding: 60px 20px !important; }
+          #skills { padding: 50px 16px !important; }
           .mern-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+          .skills-all-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important; gap: 12px !important; }
+        }
+        @media (max-width: 380px) {
+          .skills-all-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .mern-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </section>

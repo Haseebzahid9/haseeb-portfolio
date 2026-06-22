@@ -70,7 +70,7 @@ export default function Portfolio() {
       </div>
 
       {/* Filter buttons */}
-      <div data-aos="fade-up" data-aos-delay="100" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 40 }}>
+      <div data-aos="fade-up" data-aos-delay="100" className="filter-bar" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 40 }}>
         {categories.filter((c) => c === 'ALL' || projects.some((p) => p.category === c)).map((cat) => (
           <button
             key={cat}
@@ -90,7 +90,7 @@ export default function Portfolio() {
       </div>
 
       {/* Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+      <div className="portfolio-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
         {visible.map((project, i) => (
           <div
             key={project._id}
@@ -182,10 +182,14 @@ export default function Portfolio() {
       <style>{`
         .project-overlay { pointer-events: none; }
         @media (max-width: 900px) {
-          #portfolio > div:last-of-type { grid-template-columns: repeat(2, 1fr) !important; }
+          #portfolio { padding: 60px 30px !important; }
+          .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .filter-bar button { padding: 6px 14px !important; font-size: 0.78rem !important; }
         }
         @media (max-width: 580px) {
-          #portfolio > div:last-of-type { grid-template-columns: 1fr !important; }
+          #portfolio { padding: 50px 16px !important; }
+          .portfolio-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .filter-bar { gap: 8px !important; }
         }
       `}</style>
     </section>

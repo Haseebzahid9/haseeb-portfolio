@@ -23,13 +23,14 @@ export default function ProjectModal({ project, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="modal-inner"
         style={{
           background: '#fff', borderRadius: 12, maxWidth: 700, width: '100%',
           maxHeight: '90vh', overflowY: 'auto', animation: 'slideUp 0.25s ease',
         }}
       >
         {/* Header image */}
-        <div style={{ position: 'relative', height: 260, background: '#0d1117', borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
+        <div className="modal-header-img" style={{ position: 'relative', height: 260, background: '#0d1117', borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
           {project.image ? (
             <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : (
@@ -50,8 +51,8 @@ export default function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        <div style={{ padding: '28px 32px 32px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+        <div className="modal-body" style={{ padding: '28px 32px 32px' }}>
+          <div className="modal-title" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
             <h2 style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: '1.4rem', flex: 1 }}>
               {project.title}
             </h2>
@@ -86,7 +87,7 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Action buttons */}
-          <div style={{ display: 'flex', gap: 12 }}>
+          <div className="modal-actions" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {project.github && project.github !== '#' && (
               <a href={project.github} target="_blank" rel="noreferrer" className="btn-primary">
                 <Github size={16} /> View on GitHub
@@ -104,6 +105,18 @@ export default function ProjectModal({ project, onClose }) {
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @media (max-width: 768px) {
+          .modal-inner { padding: 0 !important; }
+          .modal-header-img { height: 180px !important; }
+          .modal-body { padding: 20px 18px 24px !important; }
+          .modal-title { font-size: 1.1rem !important; flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+          .modal-actions { flex-direction: column !important; }
+          .modal-actions a { width: 100% !important; justify-content: center !important; }
+        }
+        @media (max-width: 480px) {
+          .modal-header-img { height: 140px !important; }
+          .modal-body { padding: 16px 14px 20px !important; }
+        }
       `}</style>
     </div>
   );

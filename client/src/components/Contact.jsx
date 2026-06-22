@@ -98,7 +98,7 @@ export default function Contact() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 60, alignItems: 'start' }}>
+      <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 60, alignItems: 'start' }}>
 
         {/* Info */}
         <div data-aos="fade-right">
@@ -134,7 +134,7 @@ export default function Contact() {
 
         {/* Form */}
         <form data-aos="fade-left" onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+          <div className="contact-name-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
             <input
               name="name" value={form.name} onChange={handleChange}
               placeholder="Your Name" style={inputStyle}
@@ -158,7 +158,7 @@ export default function Contact() {
             onFocus={onFocus} onBlur={onBlur}
           />
           <button
-            type="submit" className="btn-primary" disabled={loading}
+            type="submit" className="btn-primary contact-submit" disabled={loading}
             style={{
               opacity: loading ? 0.7 : 1,
               transition: 'all 0.25s ease',
@@ -181,9 +181,14 @@ export default function Contact() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          #contact > div:last-child { grid-template-columns: 1fr !important; gap: 30px !important; }
-          #contact > div:last-child > form > div:first-child { grid-template-columns: 1fr !important; }
+        @media (max-width: 900px) {
+          #contact { padding: 60px 30px !important; }
+          .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+        }
+        @media (max-width: 480px) {
+          #contact { padding: 50px 16px !important; }
+          .contact-name-row { grid-template-columns: 1fr !important; }
+          .contact-submit { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>

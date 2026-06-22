@@ -105,11 +105,11 @@ export default function About() {
       </p>
 
       {/* Photo + Info */}
-      <div data-aos="fade-up" data-aos-delay="150" style={{
+      <div data-aos="fade-up" data-aos-delay="150" className="about-grid" style={{
         display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 60, alignItems: 'start', marginBottom: 60,
       }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ position: 'relative', display: 'inline-block' }}>
+        <div className="about-img" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="about-img-wrap" style={{ position: 'relative', display: 'inline-block', width: 280, height: 280 }}>
             {/* Rotating border ring */}
             <div style={{
               position: 'absolute', inset: -6,
@@ -157,7 +157,7 @@ export default function About() {
             Join me on LinkedIn and GitHub on this journey of innovation.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 24px' }}>
+          <div className="info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 24px' }}>
             {[
               ['Website', 'My Portfolio'],
               ['Phone', '+92 3184006367'],
@@ -188,7 +188,7 @@ export default function About() {
       </div>
 
       {/* Stats */}
-      <div ref={statsRef} data-aos="fade-up" data-aos-delay="200" style={{
+      <div ref={statsRef} data-aos="fade-up" data-aos-delay="200" className="stats-grid" style={{
         display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20,
       }}>
         {stats.map(({ value, label, suffix }, i) => (
@@ -198,11 +198,17 @@ export default function About() {
 
       <style>{`
         @media (max-width: 900px) {
-          #about > div:nth-child(3) { grid-template-columns: 1fr !important; gap: 30px !important; }
-          #about > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
+          #about { padding: 60px 30px !important; }
+          #about .about-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+          #about .about-grid .about-img { justify-content: center !important; }
+          #about .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        @media (max-width: 500px) {
-          #about > div:last-child { grid-template-columns: 1fr 1fr !important; }
+        @media (max-width: 480px) {
+          #about { padding: 50px 16px !important; }
+          #about .about-img-wrap { width: 200px !important; height: 200px !important; }
+          #about .about-img-wrap img { width: 200px !important; height: 200px !important; }
+          #about .info-grid { grid-template-columns: 1fr !important; }
+          #about .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
         }
       `}</style>
     </section>

@@ -37,7 +37,7 @@ export default function Hero() {
           Haseeb Raza
         </h1>
 
-        <div style={{
+        <div className="hero-typewriter" style={{
           fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
           color: 'var(--primary)',
           fontFamily: 'Poppins, sans-serif',
@@ -61,7 +61,7 @@ export default function Hero() {
           />
         </div>
 
-        <div style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        <div className="hero-buttons" style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
           <button
             className="btn-primary"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -78,7 +78,14 @@ export default function Hero() {
         .typewriter-text { color: var(--primary); }
         .typewriter-cursor { color: var(--primary); }
         @media (max-width: 768px) {
-          #hero { padding: 0 24px !important; }
+          #hero { padding: 60px 24px !important; min-height: 100svh; }
+        }
+        @media (max-width: 480px) {
+          #hero { padding: 70px 16px 40px !important; }
+          #hero h1 { font-size: 2rem !important; }
+          #hero .hero-typewriter { min-width: 0 !important; width: 100% !important; }
+          #hero .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
+          #hero .hero-buttons a, #hero .hero-buttons button { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>
