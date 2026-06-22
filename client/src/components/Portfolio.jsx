@@ -98,31 +98,34 @@ export default function Portfolio() {
             data-aos-delay={i * 80}
             onClick={() => setSelected(project)}
             style={{
-              borderRadius: 8, overflow: 'hidden', cursor: 'pointer',
+              borderRadius: 12, overflow: 'hidden', cursor: 'pointer',
               boxShadow: '0 2px 15px rgba(0,0,0,0.08)',
-              transition: 'transform 0.3s, box-shadow 0.3s',
+              transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
               background: '#f8f9fa',
+              border: '1.5px solid #e4e4e4',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-6px)';
               e.currentTarget.style.boxShadow = '0 12px 30px rgba(13,202,240,0.2)';
+              e.currentTarget.style.borderColor = 'var(--primary)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = '0 2px 15px rgba(0,0,0,0.08)';
+              e.currentTarget.style.borderColor = '#e4e4e4';
             }}
           >
             {/* Image area */}
-            <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+            <div style={{ position: 'relative', height: 130, overflow: 'hidden' }}>
               {project.image ? (
                 <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <div style={{
                   height: '100%', background: placeholderColors[project.category] || '#0dcaf0',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 }}>
-                  <i className="fas fa-code" style={{ fontSize: '2.5rem', color: 'rgba(255,255,255,0.8)', marginBottom: 8 }} />
-                  <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600, fontSize: '0.8rem' }}>{project.category}</span>
+                  <i className="fas fa-code" style={{ fontSize: '1.6rem', color: 'rgba(255,255,255,0.85)' }} />
+                  <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600, fontSize: '0.78rem' }}>{project.category}</span>
                 </div>
               )}
               <div style={{
@@ -147,18 +150,18 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div style={{ padding: '16px 18px' }}>
+            <div style={{ padding: '12px 14px 14px' }}>
               <span style={{
                 background: `${placeholderColors[project.category] || 'var(--primary)'}22`,
                 color: placeholderColors[project.category] || 'var(--primary)',
-                padding: '2px 10px', borderRadius: 12, fontSize: '0.72rem', fontWeight: 600,
+                padding: '2px 10px', borderRadius: 12, fontSize: '0.68rem', fontWeight: 600,
               }}>
                 {project.category}
               </span>
-              <h3 style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: '0.95rem', margin: '8px 0 6px', color: '#222' }}>
+              <h3 style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: '0.88rem', margin: '6px 0 4px', color: '#222', lineHeight: 1.35 }}>
                 {project.title}
               </h3>
-              <p style={{ color: '#777', fontSize: '0.82rem', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+              <p style={{ color: '#777', fontSize: '0.78rem', lineHeight: 1.55, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', margin: 0 }}>
                 {project.description}
               </p>
             </div>

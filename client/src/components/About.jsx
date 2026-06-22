@@ -1,5 +1,55 @@
 import { useEffect, useRef, useState } from 'react';
 
+function StatCard({ value, label, suffix, isVisible, index }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        textAlign: 'center',
+        background: '#fff',
+        padding: '28px 20px',
+        borderRadius: 12,
+        border: `1.5px solid ${hov ? 'var(--primary)' : '#e8e8e8'}`,
+        cursor: 'default',
+        transform: hov ? 'translateY(-6px)' : 'translateY(0)',
+        boxShadow: hov
+          ? '0 12px 32px rgba(13,202,240,0.14)'
+          : '0 2px 10px rgba(0,0,0,0.04)',
+        transition: 'all 0.3s cubic-bezier(.34,1.2,.64,1)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* thin top accent line */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0,
+        height: 3, borderRadius: '12px 12px 0 0',
+        background: hov ? 'var(--primary)' : 'transparent',
+        transition: 'background 0.3s',
+      }} />
+
+      <div style={{
+        fontSize: '2.2rem', fontWeight: 800,
+        color: 'var(--primary)',
+        fontFamily: 'Poppins',
+        lineHeight: 1,
+      }}>
+        <Counter target={value} suffix={suffix} isVisible={isVisible} />
+      </div>
+      <div style={{
+        color: hov ? '#333' : '#888',
+        fontSize: '0.83rem', marginTop: 10,
+        fontWeight: 500, letterSpacing: 0.3,
+        transition: 'color 0.3s',
+      }}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
 const stats = [
   { value: 5, label: 'Projects Completed', suffix: '+' },
   { value: 1, label: 'Years Experience', suffix: '+' },
@@ -141,20 +191,8 @@ export default function About() {
       <div ref={statsRef} data-aos="fade-up" data-aos-delay="200" style={{
         display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20,
       }}>
-        {stats.map(({ value, label, suffix }) => (
-          <div key={label} style={{
-            textAlign: 'center', background: 'var(--bg-light)',
-            padding: '28px 20px', borderRadius: 8,
-            borderTop: '3px solid var(--primary)',
-          }}>
-            <div style={{
-              fontSize: '2.2rem', fontWeight: 700,
-              color: 'var(--primary)', fontFamily: 'Poppins',
-            }}>
-              <Counter target={value} suffix={suffix} isVisible={statsVisible} />
-            </div>
-            <div style={{ color: '#666', fontSize: '0.85rem', marginTop: 6, fontWeight: 500 }}>{label}</div>
-          </div>
+        {stats.map(({ value, label, suffix }, i) => (
+          <StatCard key={label} value={value} label={label} suffix={suffix} isVisible={statsVisible} index={i} />
         ))}
       </div>
 
